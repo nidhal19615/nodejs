@@ -1,0 +1,27 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage('Clone') {
+
+            steps {
+
+                script {
+
+                    git branch: 'main', credentialsId: 'ssh', url: 'git@github.com:nidhal19615/nodejs.git'
+
+                }
+
+            }
+
+        }
+
+        // Ajoutez ici d'autres étapes de votre pipeline si nécessaire
+
+    }
+
+    // Ajoutez des i née
+
+}
