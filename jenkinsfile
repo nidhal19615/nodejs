@@ -2,6 +2,7 @@ pipeline {
 
     agent any
 
+
     stages {
 
         stage('Clone') {
@@ -18,10 +19,57 @@ pipeline {
 
         }
 
-        /// Ajoutez ici d'autres étapes de votre pipeline si nécessaire
+        
+
+        stage('Build') {
+
+            steps {
+
+                script {
+
+                    sh 'npm install'  // Exécutez les étapes de construction de votre projet ici
+
+                }
+
+            }
+
+        }
+
+
+        stage('Test') {
+
+            steps {
+
+                script {
+
+                    sh 'npm test'  // Exécutez des tests si nécessaire
+
+                }
+
+            }
+
+        }
+
+
+        stage('Push') {
+
+            steps {
+
+                script {
+
+                    sh 'npm publish'  // Poussez le package Node.js vers le registre npm
+
+                }
+
+            }
+
+        }
+
+
+        // Vous pouvez ajouter d'autres étapes ici en fonction de vos besoins
+
 
     }
 
-    // Ajoutez des i née
-
 }
+
