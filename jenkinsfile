@@ -18,7 +18,7 @@ pipeline {
 
         }
 
-        // Ajoutez ici d'autres étapes de votre pipeline si nécessaire
+        /// Ajoutez ici d'autres étapes de votre pipeline si nécessaire
 
     }
 
