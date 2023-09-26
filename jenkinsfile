@@ -10,7 +10,7 @@ pipeline {
 
                 script {
 
-                    git branch: 'main', credentialsId: 'ssh', url: 'git@github.com:nidhal19615/nodejs.git'
+                    git branch: 'main', credentialsId: 'ssh', url: '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@github.com/nidhal19615/nodejs.git'
 
                 }
 
