@@ -6,78 +6,57 @@ services:
 
   db:
 
-
     image: mysql
-
 
     command: --default-authentication-plugin=mysql_native_password
 
-
     restart: always
-
 
     environment:
 
-
       MYSQL_ROOT_PASSWORD: rootpassword
-
 
     ports:
 
-
       - "3306:3306"
-
 
     expose:
 
-
       - "3306"
 
-
     volumes:
-
 
       - my-db:/var/lib/mysql
 
 
   adminer:
 
-
     image: adminer
-
 
     restart: always
 
-
     ports:
-
 
       - "9000:9090"
 
 
-  node-app:  # Service renommé  node-app
+  node-app:
 
+    image: image-node
+                        # Remplacez "votre_image_nodejs:tag" par le nom de votre image Node.js
 
-    image: nidhal2/image-node
-
-
-    container_name: node-app  # Renommage du nom de conteneur
-
+    container_name: node-app
 
     ports:
 
-
       - "8081:8081"
 
-
     depends_on:
-
 
       - db
 
 
 volumes:
-
 
   my-db:
 
