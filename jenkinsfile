@@ -78,7 +78,7 @@ pipeline {
 
             
 
-                   sh 'docker stack deploy -c spring_stack.yml service-node'
+                   sh 'docker stack deploy -c node_stack.yml service-node'
 
 
                   }
