@@ -10,7 +10,7 @@
 
   "scripts": {
 
-    "start": "node app.js" // Ou "npm start" si le fichier "app.js" est votre point d'entrée
+    "dev": "nodemon server.js"
 
   },
 
@@ -25,4 +25,3 @@
   }
 
 }
-
