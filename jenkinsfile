@@ -1,18 +1,18 @@
 pipeline {
 
     agent any
+
     tools {
 
+        // Assurez-vous que le nom de l'outil Node.js correspond à celui configuré dans Jenkins
+
+        nodejs "NODEJS" // Remplacez "NODEJS" par le nom de l'outil Node.js configuré dans Jenkins
+
+    }
 
     stages {
-        nodejs "NODEJS" // Remplacez "NODEJS" par le nom de l'outil Node.js configuré dans Jenkins
-           
 
-     }
-
-
-     stage('Clone') {
-    }
+        stage('Clone') {
 
             steps {
 
@@ -26,9 +26,7 @@ pipeline {
 
         }
 
-        
-
-       stage('Build and Push Docker Image') {
+        stage('Build and Push Docker Image') {
 
             steps {
 
@@ -42,7 +40,6 @@ pipeline {
 
                         sh 'docker push nidhal2/image-node' 
 
-
                     }
 
                 }
@@ -51,4 +48,7 @@ pipeline {
 
         }
 
+    }
+
 }
+
