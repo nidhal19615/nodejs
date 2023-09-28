@@ -72,22 +72,7 @@ pipeline {
 
         } 
 
-        stage("Deploy") {
-
-            steps {
-
-            
-
-                   sh 'docker stack deploy -c node_stack.yml service-node'
-
-
-                  }
-
-            }
-
-
-
-
+        
     }
 
 
