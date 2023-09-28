@@ -1,54 +1,97 @@
 pipeline {
 
+
     agent any
+
 
     tools {
 
+
         // Assurez-vous que le nom de l'outil Node.js correspond à celui configuré dans Jenkins
+
 
         nodejs "NODEJS" // Remplacez "NODEJS" par le nom de l'outil Node.js configuré dans Jenkins
 
+
     }
+
 
     stages {
 
+
         stage('Clone') {
 
+
             steps {
+
 
                 script {
 
+
                     git branch: 'main', credentialsId: 'ssh', url: 'https://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@github.com/nidhal19615/nodejs.git'
+
 
                 }
 
+
             }
 
+
         }
+
 
         stage('Build and Push Docker Image') {
 
+
             steps {
+
 
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')]) {
 
+
                     script {
+
 
                         sh 'docker build -t nidhal2/image-node .'
 
+
                         sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
 
-                        sh 'docker push nidhal2/image-node' 
+
+                        sh 'docker push nidhal2/image-node'
+
 
                     }
 
+
                 }
+
 
             }
 
-        }
+
+        } 
+
+        stage("Deploy") {
+
+            steps {
+
+            
+
+                   sh 'docker stack deploy -c node_stack.yml service-node'
+
+
+                  }
+
+            }
+
+
+
 
     }
 
+
 }
+
+
 
